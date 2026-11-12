@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: hr_app
+    password: change_me
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      pool-name: EmployeeHikariPool
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1 FROM DUAL
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: none        # schema is managed by schema.sql
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  sql:
+    init:
+      mode: never
